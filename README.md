@@ -26,6 +26,9 @@ The individual's fitness is defined by the combined total distance covered by it
 * Calculate shortest routes through points in a maze by using BFS to creating component routes between single points.
 * Use OpenStreetMap to calculate shortest route between points on a real map.
 
+## Wireframe
+![Wireframe](images/wireframe.png)
+
 ## Architecture and Technologies
 Javascript will be used to handle the logic (generating and filtering populations). 
 Rendering of the points/routes between them will be done through Canvas.
