@@ -32,7 +32,7 @@ The individual's fitness is defined by the combined total distance covered by it
 ## Architecture and Technologies
 Javascript will be used to handle the logic (generating and filtering populations). 
 Rendering of the points/routes between them will be done through Canvas.
-D3 may be used to 
+D3 may be used to visualize the algorithm's convergence toward a solution.
 
 ## Implementation Timeline
 __Days 1-2:__ Research algorithm and write functional version applied to distance.
