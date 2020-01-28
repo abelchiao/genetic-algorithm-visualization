@@ -1,0 +1,5 @@
+class Population {
+  constructor(...individuals) {
+    
+  }
+}
