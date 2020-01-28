@@ -1,8 +1,8 @@
 const Individual = require('./individual');
 
 class Population {
-  constructor(...individuals) {
-
+  constructor(popSize, ...coordinates) {
+    
   }
 }
 
