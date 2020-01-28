@@ -91,9 +91,31 @@
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const Population = __webpack_require__(/*! ./population */ \"./src/population.js\");\n\nconsole.log('Webpack is working!');\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/individual.js":
+/*!***************************!*\
+  !*** ./src/individual.js ***!
+  \***************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("console.log('Webpack is working!');\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("class Individual {\n  constructor(...coordinates) {\n    this.geneCount = coordinates.length;\n    this.genes = {};\n    \n    let shuffledCoords = coordinates.shuffle();\n    console.log(shuffledCoords);\n    let startPoint = shuffledCoords.pop();\n    let loopCounts = shuffledCoords.length\n    for (let i = 0; i < loopCounts; i++) {\n      let endPoint = shuffledCoords.pop();\n      this.genes[i] = [startPoint, endPoint];\n      // console.log(startPoint);\n      // console.log(endPoint);\n      startPoint = endPoint\n    };\n    \n    this.fitness = this.calculateFitness();\n    console.log(shuffledCoords);\n    console.log(this.genes);\n    console.log(`fitness: ${this.fitness}`)\n  }\n\n  calculateFitness() {\n    let sumDistance = 0;\n    Object.values(this.genes).forEach(gene => {\n      let startPoint = gene[0];\n      let endPoint = gene[1];\n      sumDistance += Math.sqrt((startPoint[0]-endPoint[0])**2 + (startPoint[1] - endPoint[1])**2)\n    })\n    console.log(sumDistance);\n    return sumDistance;\n  }\n}\n\n// Shuffle via Fisher-Yates algorithm\nArray.prototype.shuffle = function() {\n  let currentIdx = this.length;\n  let randomIdx;\n\n  while (currentIdx) {\n    randomIdx = Math.floor(Math.random() * currentIdx);\n    currentIdx -= 1;\n    [this[currentIdx], this[randomIdx]] = [this[randomIdx], this[currentIdx]]\n  }\n\n  return this;\n};\n\nlet i = new Individual([1, 2,], [2, 3], [3, 3], [8, 4], [9, 4], [10, 17], [6, 6])\ni.calculateFitness();\n\nlet i2 = new Individual([0, 0], [4, 0], [4, 4], [0, 4]);\ni2.calculateFitness();\n\nmodule.exports = Individual;\n\n//# sourceURL=webpack:///./src/individual.js?");
+
+/***/ }),
+
+/***/ "./src/population.js":
+/*!***************************!*\
+  !*** ./src/population.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const Individual = __webpack_require__(/*! ./individual */ \"./src/individual.js\");\n\nclass Population {\n  constructor(...individuals) {\n\n  }\n}\n\nmodule.exports = Population;\n\n//# sourceURL=webpack:///./src/population.js?");
 
 /***/ })
 
