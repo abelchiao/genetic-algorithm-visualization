@@ -34,6 +34,8 @@ Javascript will be used to handle the logic (generating and filtering population
 Rendering of the points/routes between them will be done through Canvas.
 D3 may be used to visualize the algorithm's convergence toward a solution.
 
+Logic for manipulating individuals (generating, calculating fitness, mutating, etc.) will be handled by the `Individual` class in `individual.js`; population-level logic (generating, selection, etc.) will be handled by the `Population` class in `population.js`. The evolution logic loop will be constructed in `evolution.js`.
+
 ## Implementation Timeline
 __Days 1-2:__ Research algorithm and write functional version applied to distance.
 

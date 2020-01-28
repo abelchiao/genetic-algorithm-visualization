@@ -2,7 +2,7 @@ class Individual {
   constructor(...coordinates) {
     this.geneCount = coordinates.length;
     this.genes = {};
-
+    
     let shuffledCoords = coordinates.shuffle();
     console.log(shuffledCoords);
     let startPoint = shuffledCoords.pop();
@@ -14,8 +14,11 @@ class Individual {
       // console.log(endPoint);
       startPoint = endPoint
     };
+    
+    this.fitness = this.calculateFitness();
     console.log(shuffledCoords);
     console.log(this.genes);
+    console.log(`fitness: ${this.fitness}`)
   }
 
   calculateFitness() {
@@ -25,7 +28,8 @@ class Individual {
       let endPoint = gene[1];
       sumDistance += Math.sqrt((startPoint[0]-endPoint[0])**2 + (startPoint[1] - endPoint[1])**2)
     })
-    console.log(sumDistance)
+    console.log(sumDistance);
+    return sumDistance;
   }
 }
 
@@ -48,3 +52,5 @@ i.calculateFitness();
 
 let i2 = new Individual([0, 0], [4, 0], [4, 4], [0, 4]);
 i2.calculateFitness();
+
+module.exports = Individual;
