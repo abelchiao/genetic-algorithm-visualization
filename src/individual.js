@@ -4,8 +4,9 @@ class Individual {
     this.chromosome = coordinates.slice()
     this.calculateFitness();
 
-    console.log(`fitness: ${this.fitness}`)
-    console.log('distance: ', this.distance)
+    // console.log(`fitness: ${this.fitness}`)
+    // console.log('distance: ', this.distance)
+
     // Code from dealing with chromosome as array of vectors rather than relying on orderered array
     // let startPoint = shuffledCoords.pop();
     // let loopCounts = shuffledCoords.length
@@ -47,7 +48,7 @@ class Individual {
 
   // i'm so sorry
   mate(crossProb, otherInd) {
-    console.log('parent 1 chromosome: ', this.chromosome)
+    // console.log('parent 1 chromosome: ', this.chromosome)
     if (Math.random() < crossProb) {
       let childChromosomes = [];
       while (childChromosomes.length < 2) {
@@ -57,8 +58,8 @@ class Individual {
         }
         let idx2 = idx1 + Math.ceil(Math.random() * (this.chromosome.length - idx1));
         let segment = this.chromosome.slice(idx1, idx2);
-        console.log('transplanted segment: ', segment)
-        console.log(idx1, idx2)
+        // console.log('transplanted segment: ', segment)
+        // console.log(idx1, idx2)
         let childChromosome = new Array(this.chromosome.length)
         // inserts random segment of this parent into child at same indices
         for (let i = idx1; i < idx2; i ++) {
@@ -69,32 +70,39 @@ class Individual {
         for (let i = 0; i < this.chromosome.length; i++) {
           reorderedSecondParent[i] = otherInd.chromosome[(idx2+i) % this.chromosome.length];
         }
-        console.log('childChrom before completion: ', childChromosome)
+        // console.log('childChrom before completion: ', childChromosome)
         let childIdx = idx2;
         reorderedSecondParent.forEach(gene => {
           if (!childChromosome.some(ele => JSON.stringify(ele) === JSON.stringify(gene))) {
             childChromosome[childIdx % this.chromosome.length] = gene;
             childIdx += 1;
-            console.log(childChromosome)
+            // console.log(childChromosome)
           } 
         })
-        console.log('parent2 original: ', otherInd.chromosome)
-        console.log('parent2 reordered: ', reorderedSecondParent)
-        console.log('childChromosome: ', childChromosome)
+        // console.log('parent2 original: ', otherInd.chromosome)
+        // console.log('parent2 reordered: ', reorderedSecondParent)
+        // console.log('childChromosome: ', childChromosome)
         childChromosomes.push(childChromosome)
         childChromosome = [];
       }
-      console.log('child chromosome 1: ', childChromosomes[0])
-      console.log('child chromosome 2: ', childChromosomes[1])
+      // console.log('child chromosome 1: ', childChromosomes[0])
+      // console.log('child chromosome 2: ', childChromosomes[1])
       let children = [];
       childChromosomes.forEach(chromosome => {
-        children.push(new Individual(...chromosome))
+        let child = new Individual(...chromosome);
+        child.mutate(mutProb);
+        children.push(child)
       })
-      console.log(children);
+      // console.log('crossed', children);
       return children;
     } else {
       // need to reassign w/ concat where this is called to build next gen
-      return [this, otherInd]
+      let firstParentClone = new Individual(...this.chromosome);
+      let secondParentClone = new Individual(...otherInd.chromosome);
+      firstParentClone.mutate(mutProb);
+      secondParentClone.mutate(mutProb);
+      // console.log('no cross: ', firstParentClone, secondParentClone)
+      return [firstParentClone, secondParentClone];
     }
   }
 }
@@ -133,11 +141,14 @@ function getDistance(point1, point2) {
 // let i3 = new Individual([0, 4], [4, 4], [4, 0], [0, 0]);
 // i2.mate(1, i3);
 
+let mutProb = 0.05
+let crossProb = 0.3
+
 let i4 = new Individual([0,0], [1,1], [2,2], [3,3], [4,4], [5,5])
 // console.log(i4);
 let i5 = new Individual([2,2], [5,5], [3,3], [0,0], [1,1], [4,4])
-i5.fitness = 1000
-console.log('fitness: ', i5.fitness);
-// i4.mate(1, i5);
+// i5.fitness = 1000
+// console.log('fitness: ', i5.fitness);
+i4.mate(0.5, i5);
 
 module.exports = Individual;
