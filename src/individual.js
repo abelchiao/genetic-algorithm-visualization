@@ -46,7 +46,6 @@ class Individual {
     return this.chromosome
   }
 
-  // i'm so sorry
   mate(crossProb, otherInd) {
     // console.log('parent 1 chromosome: ', this.chromosome)
     if (Math.random() < crossProb) {
@@ -107,35 +106,9 @@ class Individual {
   }
 }
 
-//   Code from when treating chromosome as array of vectors
-//   calculateFitness() {
-//     let sumDistance = 0;
-//     Object.values(this.chromosome).forEach(gene => {
-//       let startPoint = gene[0];
-//       let endPoint = gene[1];
-//       sumDistance += Math.sqrt((startPoint[0]-endPoint[0])**2 + (startPoint[1] - endPoint[1])**2)
-//     })
-//     console.log(sumDistance);
-//     return sumDistance;
-//   }
-// }
-
 function getDistance(point1, point2) {
   return Math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2);
 }
-
-// Shuffle via Fisher-Yates algorithm
-// Array.prototype.shuffle = function() {
-//   let currentIdx = this.length;
-//   let randomIdx;
-//   while (currentIdx) {
-//     randomIdx = Math.floor(Math.random() * currentIdx);
-//     currentIdx -= 1;
-//     [this[currentIdx], this[randomIdx]] = [this[randomIdx], this[currentIdx]]
-//   }
-//   return this;
-// };
-
 
 // let i2 = new Individual([0, 0], [4, 0], [4, 4], [0, 4]);
 // let i3 = new Individual([0, 4], [4, 4], [4, 0], [0, 0]);

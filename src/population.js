@@ -1,11 +1,11 @@
-const Individual = require('./individual');
-
-let crossProb = 0.3;
-let mutProb = 0.05;
+// const Individual = require('./individual');
+import Individual from './individual';
 
 class Population {
-  constructor(popSize, ...coordinates) {
+  constructor(popSize, crossProb, mutProb, ...coordinates) {
     this.popSize = popSize;
+    this.crossProb = crossProb;
+    this.mutProb = mutProb;
     this.totalFitness = 0;
     this.currentGen = [];
     for (let i = 0; i < popSize; i++) {
@@ -31,7 +31,7 @@ class Population {
           matingPair.push(individuals[i]);
           if (matingPair.length === 2) {
             // console.log('in loop')
-            let newChildren = matingPair[0].mate(crossProb, matingPair[1]);
+            let newChildren = matingPair[0].mate(this.crossProb, matingPair[1]);
             nextGen = nextGen.concat(newChildren);
             matingPair = [];
             // console.log('growing next generation: ', nextGen)
@@ -59,7 +59,7 @@ class Population {
         fittest = individual;
       }
     })
-    console.log(JSON.stringify(`fittest individual's distance: ${fittest.distance}`))
+    console.log(`fittest individual's distance: ${fittest.distance}`)
     return fittest;
   }
 }
@@ -76,7 +76,7 @@ Array.prototype.shuffle = function () {
   return this;
 };
 
-let p = new Population(10, [0,0], [1, 1], [2, 2], [3, 3], [4, 4], [5,5], [6,6], [7,7]);
+let p = new Population(10, 0.3, 0.05, [0,0], [1, 1], [2, 2], [3, 3], [4, 4], [5,5], [6,6], [7,7]);
 p.createNextGen();
 
 module.exports = Population;
