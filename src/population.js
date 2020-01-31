@@ -79,4 +79,5 @@ Array.prototype.shuffle = function () {
 let p = new Population(10, 0.3, 0.05, [0,0], [1, 1], [2, 2], [3, 3], [4, 4], [5,5], [6,6], [7,7]);
 p.createNextGen();
 
-module.exports = Population;
+// module.exports = Population;
+export default Population;

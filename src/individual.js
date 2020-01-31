@@ -124,4 +124,5 @@ let i5 = new Individual([2,2], [5,5], [3,3], [0,0], [1,1], [4,4])
 // console.log('fitness: ', i5.fitness);
 i4.mate(0.5, i5);
 
-module.exports = Individual;
+export default Individual;
+// module.exports = Individual;

@@ -29,8 +29,41 @@ export const clearCanvas = canvas => {
   // ctx.moveTo(0, 0);
 };
 
-export const startEvolution = population => {
-  let evolveInt = setInterval(() => {
-    population.createNextGen()
-  })
+export const startEvolution = (ctx, population) => {
+  setInterval(() => {
+    population.createNextGen();
+    let fittest = population.getFittest();
+    clearCanvas(canvas);
+    drawPoints(ctx, fittest);
+    drawPaths(ctx, fittest);
+  }, 1000)
+}
+
+export const stopEvolution = () => {
+  clearInterval(evolveInt);
+}
+
+export const evolutionLoop = (ctx, population) => {
+  population.createNextGen();
+  let fittest = population.getFittest();
+  clearCanvas(canvas);
+  drawPoints(ctx, fittest);
+  drawPaths(ctx, fittest);
+};
+
+export const addButtonListeners = (ctx, population) => {
+  const startBtn = document.getElementById('start');
+  const stopBtn  = document.getElementById('stop');
+  let evolveInt = null;
+
+  const beginEvol = () => {
+    evolveInt = setInterval(() => evolutionLoop(ctx, population), 100);
+  }
+
+  const stopEvol = () => {
+    clearInterval(evolveInt);
+  }
+
+  startBtn.addEventListener('click', beginEvol)
+  stopBtn.addEventListener('click', stopEvol)
 }
