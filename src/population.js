@@ -3,11 +3,14 @@ import Individual from './individual';
 
 class Population {
   constructor(popSize, crossProb, mutProb, ...coordinates) {
+    this.coordinates = coordinates
     this.popSize = popSize;
     this.crossProb = crossProb;
     this.mutProb = mutProb;
     this.totalFitness = 0;
     this.currentGen = [];
+    this.genNumber = 0;
+    
     for (let i = 0; i < popSize; i++) {
       let chromosome = coordinates.slice().shuffle();
       let individual = new Individual(...chromosome);

@@ -1,7 +1,7 @@
 import Population from './population';
 
 export const drawPoints = (ctx, individual) => {
-  const pxSize = 8;
+  const pxSize = 5;
   const offset = pxSize / 2;
   individual.chromosome.forEach(gene => {
     ctx.fillRect(gene[0] - offset, gene[1] - offset, pxSize, pxSize);
@@ -54,6 +54,7 @@ export const evolutionLoop = (ctx, population) => {
 export const addButtonListeners = (ctx, population) => {
   const startBtn = document.getElementById('start');
   const stopBtn  = document.getElementById('stop');
+  const resetBtn = document.getElementById('reset')
   let evolveInt = null;
 
   const beginEvol = () => {
@@ -64,6 +65,19 @@ export const addButtonListeners = (ctx, population) => {
     clearInterval(evolveInt);
   }
 
+  const resetPop = () => {
+    clearInterval(evolveInt);
+    population = new Population(population.popSize, population.crossProb, population.mutProb, ...population.coordinates)
+    clearCanvas(canvas)
+    const pxSize = 5;
+    const offset = pxSize / 2;
+    population.coordinates.forEach(gene => {
+      ctx.fillRect(gene[0] - offset, gene[1] - offset, pxSize, pxSize);
+    });
+    console.log('resetting')
+  }
+
   startBtn.addEventListener('click', beginEvol)
   stopBtn.addEventListener('click', stopEvol)
+  resetBtn.addEventListener('click', resetPop)
 }
