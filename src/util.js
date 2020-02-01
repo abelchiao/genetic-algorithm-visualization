@@ -1,5 +1,9 @@
 import Population from './population';
 
+export const factorial = num => {
+  return (num <= 1) ? 1 : num * factorial(num-1)
+};
+
 export const drawPoints = (ctx, individual) => {
   const pxSize = 5;
   const offset = pxSize / 2;
@@ -51,13 +55,16 @@ export const evolutionLoop = (ctx, population) => {
   drawPaths(ctx, fittest);
 };
 
-export const addButtonListeners = (ctx, population) => {
+export const addButtonListeners = (ctx, popSize, crossProb, mutProb, coordinates) => {
   const startBtn = document.getElementById('start');
   const stopBtn  = document.getElementById('stop');
-  const resetBtn = document.getElementById('reset')
+  const resetBtn = document.getElementById('reset');
+  const clearBtn = document.getElementById('clear');
   let evolveInt = null;
+  let population;
 
   const beginEvol = () => {
+    let population = new Population(popSize, crossProb, mutProb, ...coordinates)
     evolveInt = setInterval(() => evolutionLoop(ctx, population), 100);
   }
 
@@ -67,7 +74,7 @@ export const addButtonListeners = (ctx, population) => {
 
   const resetPop = () => {
     clearInterval(evolveInt);
-    population = new Population(population.popSize, population.crossProb, population.mutProb, ...population.coordinates)
+    population = new Population(popSize, crossProb, mutProb, ...coordinates)
     clearCanvas(canvas)
     const pxSize = 5;
     const offset = pxSize / 2;
@@ -77,7 +84,46 @@ export const addButtonListeners = (ctx, population) => {
     console.log('resetting')
   }
 
-  startBtn.addEventListener('click', beginEvol)
-  stopBtn.addEventListener('click', stopEvol)
-  resetBtn.addEventListener('click', resetPop)
+  const clearPop = () => {
+    clearInterval(evolveInt)
+    coordinates = [];
+    clearCanvas(canvas);
+    console.log('clearing');
+  }
+
+  startBtn.addEventListener('click', beginEvol);
+  stopBtn.addEventListener('click', stopEvol);
+  resetBtn.addEventListener('click', resetPop);
+  clearBtn.addEventListener('click', clearPop);
 }
+
+// export const addButtonListeners = (ctx, population) => {
+//   const startBtn = document.getElementById('start');
+//   const stopBtn  = document.getElementById('stop');
+//   const resetBtn = document.getElementById('reset')
+//   let evolveInt = null;
+
+//   const beginEvol = () => {
+//     evolveInt = setInterval(() => evolutionLoop(ctx, population), 100);
+//   }
+
+//   const stopEvol = () => {
+//     clearInterval(evolveInt);
+//   }
+
+//   const resetPop = () => {
+//     clearInterval(evolveInt);
+//     population = new Population(population.popSize, population.crossProb, population.mutProb, ...population.coordinates)
+//     clearCanvas(canvas)
+//     const pxSize = 5;
+//     const offset = pxSize / 2;
+//     population.coordinates.forEach(gene => {
+//       ctx.fillRect(gene[0] - offset, gene[1] - offset, pxSize, pxSize);
+//     });
+//     console.log('resetting')
+//   }
+
+//   startBtn.addEventListener('click', beginEvol)
+//   stopBtn.addEventListener('click', stopEvol)
+//   resetBtn.addEventListener('click', resetPop)
+// }

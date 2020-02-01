@@ -1,9 +1,9 @@
 class Individual {
-  constructor(...coordinates) {
+  constructor(mutProb, ...coordinates) {
     this.geneCount = coordinates.length;
-    this.chromosome = coordinates.slice()
+    this.mutProb = mutProb;
+    this.chromosome = coordinates.slice();
     this.calculateFitness();
-
     // console.log(`fitness: ${this.fitness}`)
     // console.log('distance: ', this.distance)
 
@@ -31,9 +31,9 @@ class Individual {
     return 1 / sumDist;
   }
 
-  mutate(mutProb) {
+  mutate() {
     // console.log(JSON.stringify(this.chromosome))
-    if (Math.random() < mutProb) {
+    if (Math.random() < this.mutProb) {
       let idx1 = Math.floor(Math.random() * this.chromosome.length);
       let idx2 = Math.floor(Math.random() * this.chromosome.length);
       while (idx1 === idx2) idx2 = Math.floor(Math.random() * this.chromosome.length);
@@ -46,7 +46,7 @@ class Individual {
     return this.chromosome
   }
 
-  mate(crossProb, otherInd) {
+  mate(crossProb, mutProb, otherInd) {
     // console.log('parent 1 chromosome: ', this.chromosome)
     if (Math.random() < crossProb) {
       let childChromosomes = [];
@@ -56,7 +56,7 @@ class Individual {
           idx1 = Math.floor(Math.random() * this.chromosome.length);
         }
         let idx2 = idx1 + Math.ceil(Math.random() * (this.chromosome.length - idx1));
-        let segment = this.chromosome.slice(idx1, idx2);
+        // let segment = this.chromosome.slice(idx1, idx2);
         // console.log('transplanted segment: ', segment)
         // console.log(idx1, idx2)
         let childChromosome = new Array(this.chromosome.length)
@@ -88,18 +88,18 @@ class Individual {
       // console.log('child chromosome 2: ', childChromosomes[1])
       let children = [];
       childChromosomes.forEach(chromosome => {
-        let child = new Individual(...chromosome);
-        child.mutate(mutProb);
+        let child = new Individual(this.mutProb, ...chromosome);
+        child.mutate(this.mutProb);
         children.push(child)
       })
       // console.log('crossed', children);
       return children;
     } else {
       // need to reassign w/ concat where this is called to build next gen
-      let firstParentClone = new Individual(...this.chromosome);
-      let secondParentClone = new Individual(...otherInd.chromosome);
-      firstParentClone.mutate(mutProb);
-      secondParentClone.mutate(mutProb);
+      let firstParentClone = new Individual(this.mutProb, ...this.chromosome);
+      let secondParentClone = new Individual(this.mutProb, ...otherInd.chromosome);
+      firstParentClone.mutate(this.mutProb);
+      secondParentClone.mutate(this.mutProb);
       // console.log('no cross: ', firstParentClone, secondParentClone)
       return [firstParentClone, secondParentClone];
     }
@@ -114,15 +114,15 @@ function getDistance(point1, point2) {
 // let i3 = new Individual([0, 4], [4, 4], [4, 0], [0, 0]);
 // i2.mate(1, i3);
 
-let mutProb = 0.05
-let crossProb = 0.3
+// let mutProb = 0.05
+// let crossProb = 0.3
 
-let i4 = new Individual([0,0], [1,1], [2,2], [3,3], [4,4], [5,5])
+// let i4 = new Individual([0,0], [1,1], [2,2], [3,3], [4,4], [5,5])
 // console.log(i4);
-let i5 = new Individual([2,2], [5,5], [3,3], [0,0], [1,1], [4,4])
+// let i5 = new Individual([2,2], [5,5], [3,3], [0,0], [1,1], [4,4])
 // i5.fitness = 1000
 // console.log('fitness: ', i5.fitness);
-i4.mate(0.5, i5);
+// i4.mate(0.5, i5);
 
 export default Individual;
 // module.exports = Individual;

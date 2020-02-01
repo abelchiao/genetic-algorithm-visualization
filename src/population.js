@@ -1,5 +1,6 @@
 // const Individual = require('./individual');
 import Individual from './individual';
+import { factorial } from './util';
 
 class Population {
   constructor(popSize, crossProb, mutProb, ...coordinates) {
@@ -10,10 +11,11 @@ class Population {
     this.totalFitness = 0;
     this.currentGen = [];
     this.genNumber = 0;
-    
+    this.numPossibleRoutes = factorial(coordinates.length)
+
     for (let i = 0; i < popSize; i++) {
       let chromosome = coordinates.slice().shuffle();
-      let individual = new Individual(...chromosome);
+      let individual = new Individual(mutProb, ...chromosome);
       this.totalFitness += individual.fitness;
       this.currentGen.push(individual);
       // console.log('population total fitness: ', this.totalFitness)
@@ -34,7 +36,7 @@ class Population {
           matingPair.push(individuals[i]);
           if (matingPair.length === 2) {
             // console.log('in loop')
-            let newChildren = matingPair[0].mate(this.crossProb, matingPair[1]);
+            let newChildren = matingPair[0].mate(this.crossProb, this.mutProb, matingPair[1]);
             nextGen = nextGen.concat(newChildren);
             matingPair = [];
             // console.log('growing next generation: ', nextGen)
