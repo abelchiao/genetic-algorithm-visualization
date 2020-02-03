@@ -5,7 +5,7 @@ Genetic algorithms are an embodiment of the intersection between computer scienc
 Genetic algorithms are optimization algorithms inspired by the principle of Darwinian natural selection.
 Solutions to a problem are represented as individual chromosomes within a population and are evaluated for individual fitness/performance.
 The fittest individuals in the population reproduce, producing offspring with a combination of the parents' traits; the least fit individuals are removed from the population and replaced with the children.
-Further population variance/diversity is driven by random events modeled after chromosomal crossover and genetic mutation, resulting in a population that convergers toward a more optimal solution with each generation. 
+Further population variance/diversity is driven by random events modeled after chromosomal crossover and genetic mutation, resulting in a population that converges toward a more optimal solution with each generation. 
 
 This project visualizes the use of a genetic algorithm to solve the traveling salesman problem - points are chosen on a map/plane and the algorithm attempts to find the shortest path that traverses every point.
 Individual solutions are comprised of combinations of routes between two points on a map (genes).
