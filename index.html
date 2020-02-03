@@ -18,63 +18,104 @@
 
     <div class='route-displays'>
       <div class='generation-fittest'>
-        <h2>Shortest route in current generation</h2>
-        <canvas width=600 height=400 id="canvas"></canvas>
+        <h2 class='canvas-label'>Shortest route in current generation</h2>
+        <canvas width=600 height=500 id="canvas"></canvas>
       </div>
       <div class='right-display'>
         <div class='overall-fittest'>
-          <h2>Shortest overall route</h2>
-          <canvas width=300 height=200 id='fittest'></canvas>
+          <h2 class='canvas-label'>Shortest route found</h2>
+          <canvas width=300 height=250 id='fittest'></canvas>
         </div>
         <div class='run-info'>
-          <div>Number of possible routes:</div>
-          <div>Current generation:</div>
-          <div>Individuals screened:</div>
-          <div>Starting distance:</div>
-          <div>Best distance:</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class='algo-options'>
-      <h2 class='params-title'>Algorithm Parameters</h2>
-      <div class='param-item-container'>
-        <div>Population size</div>
-        <div class='param-input'>
-          <input id='popsize-slider' type='range' min='0' max='2000' step='25' value='500'>
-          <div class='param-value-container'>
-            <label class='param-value' for='popsize-slider' id='popsize-label'></label>
+          <div class='run-metric-item'>
+            <div class='run-metric-label'>Starting distance:</div>
+            <div id='starting-distance'></div>
           </div>
-        </div>
-      </div>
-      <div class='param-item-container'>
-        <div>Mutation rate</div>
-        <div class='param-input'>
-          <input id='mutation-slider' type='range' min='0' max='1' step='0.01' value='0.05'>
-          <div class='param-value-container'>
-            <label class='param-value' for='mutation-slider' id='mutation-label'></label>
+          <div class='run-metric-item'>
+            <div class='run-metric-label'>Shortest distance found:</div>
+            <div id='best-distance'></div>
           </div>
-        </div>
-      </div>
-      <div class='param-item-container'>
-        <div>Crossover rate</div>
-        <div class='param-input'>
-          <input id='cross-slider' type='range' min='0' max='1' step='0.01' value='0.3'>
-          <div class='param-value-container'>
-            <label class='param-value' for='cross-slider' id='cross-label'></label>
+          <div class='run-metric-item'>
+            <div class='run-metric-label'>Number of possible routes:</div>
+            <div id='total-possible-routes'></div>
+          </div>
+          <div class='run-metric-item'>
+            <div class='run-metric-label'>Current generation:</div>
+            <div id='current-generation'></div>
+          </div>
+          <div class='run-metric-item'>
+            <div class='run-metric-label'>Individuals screened:</div>
+            <div id='individuals-screened'></div>
           </div>
         </div>
       </div>
     </div>
-    <div class='control-buttons-container'>
-      <button id='start'>Start</button>
-      <button id='stop'>Pause</button>
-      <button id='reset'>Reset</button>
-      <button id='clear'>Clear</button>
+
+    <div class='below-canvases'>
+      <div class='controls'>
+        <div class='algo-options'>
+          <h2 class='params-title'>Algorithm Parameters</h2>
+          <div class='param-item-container'>
+            <div>Population size</div>
+            <div class='param-input'>
+              <input id='popsize-slider' type='range' min='0' max='2000' step='25' value='500'>
+              <div class='param-value-container'>
+                <label class='param-value' for='popsize-slider' id='popsize-label'></label>
+              </div>
+            </div>
+          </div>
+          <div class='param-item-container'>
+            <div>Mutation rate</div>
+            <div class='param-input'>
+              <input id='mutation-slider' type='range' min='0' max='1' step='0.01' value='0.05'>
+              <div class='param-value-container'>
+                <label class='param-value' for='mutation-slider' id='mutation-label'></label>
+              </div>
+            </div>
+          </div>
+          <div class='param-item-container'>
+            <div>Crossover rate</div>
+            <div class='param-input'>
+              <input id='cross-slider' type='range' min='0' max='1' step='0.01' value='0.3'>
+              <div class='param-value-container'>
+                <label class='param-value' for='cross-slider' id='cross-label'></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='control-buttons-container'>
+          <button id='start'>Start/Resume</button>
+          <button id='stop'>Pause</button>
+          <button id='reset'>Reset</button>
+          <button id='clear'>Clear</button>
+        </div>
+      </div>
+      <div class='instructions'>
+        <h2 class='instructions-label'>Instructions</h2>
+        <ul>
+          <li>Press START to begin searching for shortest route between the default provided points.</li>
+          <li>Algorithm parameters can be changed using the interface to the left.</li>
+          <li>To run the algorithm against a custom set of points, click CLEAR and then click on the canvas to specify points.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class='background'>
+      <p>
+        Genetic algorithms are optimization algorithms inspired by the principle of Darwinian natural selection. Solutions to a
+        problem are represented as individual chromosomes within a population and are evaluated for individual
+        fitness/performance. The fittest individuals in the population reproduce, producing offspring with a combination of the
+        parents' traits; the least fit individuals are removed from the population and replaced with the children. Further
+        population variance/diversity is driven by random events modeled after chromosomal crossover and genetic mutation,
+        resulting in a population that converges toward a more optimal solution with each generation.
+      </p>
+      <p>
+        This project visualizes the use of a genetic algorithm to solve the traveling salesman problem - points are chosen on a
+        map/plane and the algorithm attempts to find the shortest path that traverses every point. Individual solutions are
+        comprised of combinations of routes between two points on a map (genes). The individual's fitness is defined by the
+        combined total distance covered by its component routes.
+      </p>
     </div>
   </div>
-
-  <!-- <canvas width='800' height='600' id='fittestEver'></canvas> -->
 </body>
 </html>

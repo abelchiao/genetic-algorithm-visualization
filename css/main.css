@@ -16,7 +16,7 @@ body {
 }
 
 .app-all {
-  padding-top: 30px;
+  padding: 30px 0;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ body {
   /* border: 1px solid red; */
   background: #fff;
   width: 600px;
-  height: 400px
+  height: 500px
 }
 
 .right-display {
@@ -50,7 +50,12 @@ body {
 #fittest {
   background: #fff;
   width: 300px;
-  height: 200px;
+  height: 250px;
+}
+
+.canvas-label {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .run-info {
@@ -65,4 +70,55 @@ body {
   margin: 10px;
   font-size: 16px;
   line-height: 20px;
+}
+
+.run-metric-label {
+  font-weight: 400;
+}
+
+.below-canvases {
+  display: flex;
+  justify-content: space-between;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* border: 1px solid purple; */
+  background: rgb(10,28,50);
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.instructions-label {
+  font-size: 19px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.instructions li {
+  margin-bottom: 5px;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* border: 1px solid purple; */
+  background: rgb(10,28,50);
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.background p {
+  margin: 5px;
 }
