@@ -95,28 +95,28 @@ export const addButtonListeners = (ctx) => {
   const popSizeLabel = document.getElementById('popsize-label');
   const popSizeSlider = document.getElementById('popsize-slider');
   let popSize = popSizeSlider.value;
-  popSizeLabel.innerHTML = `Population size: ${popSizeSlider.value}`;
+  popSizeLabel.innerHTML = `${popSizeSlider.value}`;
   popSizeSlider.oninput = () => {
     popSize = popSizeSlider.value
-    popSizeLabel.innerHTML = `Population size: ${popSize}`
+    popSizeLabel.innerHTML = `${popSize}`
     console.log(popSize);
   };
   const mutationLabel = document.getElementById('mutation-label');
   const mutationSlider = document.getElementById('mutation-slider');
   let mutProb = mutationSlider.value;
-  mutationLabel.innerHTML = `Mutation rate: ${mutationSlider.value}`;
+  mutationLabel.innerHTML = `${mutationSlider.value}`;
   mutationSlider.oninput = () => {
     mutProb = mutationSlider.value
-    mutationLabel.innerHTML = `Mutation rate: ${mutProb}`
+    mutationLabel.innerHTML = `${mutProb}`
     console.log(mutProb);
   };
   const crossLabel = document.getElementById('cross-label');
   const crossSlider = document.getElementById('cross-slider');
   let crossProb = crossSlider.value;
-  crossLabel.innerHTML = `Crossover rate: ${crossSlider.value}`;
+  crossLabel.innerHTML = `${crossSlider.value}`;
   crossSlider.oninput = () => {
     crossProb = crossSlider.value
-    crossLabel.innerHTML = `Crossover rate: ${crossProb}`
+    crossLabel.innerHTML = `${crossProb}`
     console.log(crossProb);
   };
 
