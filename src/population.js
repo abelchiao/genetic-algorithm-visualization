@@ -12,7 +12,8 @@ class Population {
     this.currentGen = [];
     this.genNumber = 0;
     this.numPossibleRoutes = factorial(coordinates.length)
-
+    // this.getFittest()
+    
     for (let i = 0; i < popSize; i++) {
       let chromosome = coordinates.slice().shuffle();
       let individual = new Individual(mutProb, ...chromosome);
@@ -21,6 +22,7 @@ class Population {
       // console.log('population total fitness: ', this.totalFitness)
     }
     // console.log('CURRENT POPULATION: ', this.currentGen)
+    this.fittestEver = this.getFittest();
   }
 
   createNextGen() {
@@ -47,6 +49,11 @@ class Population {
     }
     // console.log('complete next generation: ', nextGen);
     this.currentGen = nextGen;
+    this.genNumber += 1
+    let currentGenFittest = this.getFittest();
+    if (currentGenFittest.fitness > this.fittestEver.fitness) {
+      this.fittestEver = currentGenFittest
+    };
   }
 
   getTotalFitness() {
