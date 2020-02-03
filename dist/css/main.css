@@ -1,5 +1,6 @@
 html body {
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   /* background: rgb(197, 198, 199) */
   background-image: url('1561091.jpg');
   background-repeat: no-repeat;
@@ -23,9 +24,16 @@ body {
 }
 
 .app-title {
-  font-size: 40px;
+  font-size: 30px;
   /* -webkit-text-stroke: 1px #fff; */
   color: #fff;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.route-displays {
+  display: flex;
+  justify-content: space-between;
 }
 
 #canvas {
@@ -35,53 +43,26 @@ body {
   height: 400px
 }
 
-.algo-options {
+.right-display {
+  margin-left: 30px;
+}
+
+#fittest {
+  background: #fff;
+  width: 300px;
+  height: 200px;
+}
+
+.run-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   /* border: 1px solid purple; */
   background: rgb(10,28,50);
   border-radius: 4px;
   padding: 10px;
   border: 1px solid #fff;
   margin: 10px;
-}
-
-.params-title {
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-
-.param-item-container {
-  width: 350px;
-  /* border: 1px solid blue; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-}
-
-.param-input {
-  width: 180px;
-  display: flex;
-}
-
-.param-value-container {
-  width: 45px;
-  border: 1px solid #fff;
-  background: rgb(0, 0, 53);
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 5px;
-}
-
-.param-value {
-  font-size: 12px;
-}
-
-.control-buttons-container button {
-  font-size: 20px;
-  border-radius: 4px;
+  font-size: 16px;
+  line-height: 20px;
 }

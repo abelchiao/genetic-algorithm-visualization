@@ -4,16 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/parameter-options.css" />
   <script src='./main.js'></script>
   <title>Genetic Algorithm Visualizer</title>
 </head>
 <body>
   <div class='app-all'>
+
     <h1 class='app-title'>Genetic Algorithm Visualizer</h1>
-    <canvas width=600 height=400 id="canvas"></canvas>
+
+    <div class='route-displays'>
+      <div class='generation-fittest'>
+        <h2>Shortest route in current generation</h2>
+        <canvas width=600 height=400 id="canvas"></canvas>
+      </div>
+      <div class='right-display'>
+        <div class='overall-fittest'>
+          <h2>Shortest overall route</h2>
+          <canvas width=300 height=200 id='fittest'></canvas>
+        </div>
+        <div class='run-info'>
+          <div>Number of possible routes:</div>
+          <div>Current generation:</div>
+          <div>Individuals screened:</div>
+          <div>Starting distance:</div>
+          <div>Best distance:</div>
+        </div>
+      </div>
+    </div>
+
+
     <div class='algo-options'>
       <h2 class='params-title'>Algorithm Parameters</h2>
       <div class='param-item-container'>
@@ -46,7 +69,7 @@
     </div>
     <div class='control-buttons-container'>
       <button id='start'>Start</button>
-      <button id='stop'>Stop</button>
+      <button id='stop'>Pause</button>
       <button id='reset'>Reset</button>
       <button id='clear'>Clear</button>
     </div>
