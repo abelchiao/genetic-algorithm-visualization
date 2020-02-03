@@ -60,6 +60,7 @@ export const addButtonListeners = (ctx, popSize, crossProb, mutProb, coordinates
   const stopBtn  = document.getElementById('stop');
   const resetBtn = document.getElementById('reset');
   const clearBtn = document.getElementById('clear');
+  // let coordinates = [];
   let evolveInt = null;
   let population;
 
@@ -86,7 +87,7 @@ export const addButtonListeners = (ctx, popSize, crossProb, mutProb, coordinates
 
   const clearPop = () => {
     clearInterval(evolveInt)
-    coordinates = [];
+    // coordinates = [];
     clearCanvas(canvas);
     console.log('clearing');
   }
