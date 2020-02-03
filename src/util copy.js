@@ -55,12 +55,12 @@ export const evolutionLoop = (ctx, population) => {
   drawPaths(ctx, fittest);
 };
 
-export const addButtonListeners = (ctx) => {
+export const addButtonListeners = (ctx, popSize, crossProb, mutProb, coordinates) => {
   const startBtn = document.getElementById('start');
   const stopBtn  = document.getElementById('stop');
   const resetBtn = document.getElementById('reset');
   const clearBtn = document.getElementById('clear');
-  let coordinates = [];
+  // let coordinates = [];
   let evolveInt = null;
   let population;
 
@@ -87,52 +87,10 @@ export const addButtonListeners = (ctx) => {
 
   const clearPop = () => {
     clearInterval(evolveInt)
-    coordinates = [];
+    // coordinates = [];
     clearCanvas(canvas);
     console.log('clearing');
   }
-
-  const popSizeLabel = document.getElementById('popsize-label');
-  const popSizeSlider = document.getElementById('popsize-slider');
-  let popSize = popSizeSlider.value;
-  popSizeLabel.innerHTML = `Population size: ${popSizeSlider.value}`;
-  popSizeSlider.oninput = () => {
-    popSize = popSizeSlider.value
-    popSizeLabel.innerHTML = `Population size: ${popSize}`
-    console.log(popSize);
-  };
-  const mutationLabel = document.getElementById('mutation-label');
-  const mutationSlider = document.getElementById('mutation-slider');
-  let mutProb = mutationSlider.value;
-  mutationLabel.innerHTML = `Mutation rate: ${mutationSlider.value}`;
-  mutationSlider.oninput = () => {
-    mutProb = mutationSlider.value
-    mutationLabel.innerHTML = `Mutation rate: ${mutProb}`
-    console.log(mutProb);
-  };
-  const crossLabel = document.getElementById('cross-label');
-  const crossSlider = document.getElementById('cross-slider');
-  let crossProb = crossSlider.value;
-  crossLabel.innerHTML = `Crossover rate: ${crossSlider.value}`;
-  crossSlider.oninput = () => {
-    crossProb = crossSlider.value
-    crossLabel.innerHTML = `Crossover rate: ${crossProb}`
-    console.log(crossProb);
-  };
-
-  canvas.addEventListener('click', function (event) {
-    var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    console.log("x: " + x + " y: " + y);
-    coordinates.push([x, y])
-    console.log('coordinates: ', coordinates)
-    const pxSize = 5;
-    const offset = pxSize / 2;
-    ctx.fillRect(x - offset, y - offset, pxSize, pxSize);
-  }, false);
-
-  console.log(`popsize: ${popSize}, mutprob: ${mutProb}, crossprob: ${crossProb}`)
 
   startBtn.addEventListener('click', beginEvol);
   stopBtn.addEventListener('click', stopEvol);
