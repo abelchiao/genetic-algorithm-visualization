@@ -149,12 +149,15 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   const clearPop = () => {
     clearInterval(evolveInt)
     coordinates = [];
+    population = null;
     clearCanvas(canvas);
     fittestCtx.clearRect(0, 0, canvas.width, canvas.height)
     console.log('clearing');
     totalRoutesDisplay.innerHTML = ''
     document.getElementById('current-generation').innerHTML = 0
     document.getElementById('individuals-screened').innerHTML = 0
+    document.getElementById('starting-distance').innerHTML = '';
+    document.getElementById('best-distance').innerHTML = '';
   }
 
   const popSizeLabel = document.getElementById('popsize-label');
