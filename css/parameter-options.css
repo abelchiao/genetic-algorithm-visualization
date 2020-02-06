@@ -30,6 +30,10 @@
   padding: 5px;
 }
 
+.param-item-label {
+  display: flex;
+}
+
 .param-input {
   width: 180px;
   display: flex;
@@ -114,4 +118,15 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.question-circle {
+  /* fill: #fff; */
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+}
+
+.question-circle:hover {
+  cursor: pointer;
 }
