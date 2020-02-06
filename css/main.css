@@ -122,3 +122,9 @@ body {
 .background p {
   margin: 5px;
 }
+
+.question-circle {
+  /* fill: #fff; */
+  width: 16px;
+  height: 16px;
+}
