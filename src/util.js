@@ -104,7 +104,6 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   [495.1895332449387, 292.3689634969027],
   [477.507483466857, 341.49409975645904],
   [447.71341406724946, 384.3688863505157]]
-  // let coordinates = [[300, 50], [100, 250], [500, 250], [300,450], [200, 80], [400, 80], [200, 420], [400, 420], [130, 150], [470, 150], [130, 350], [470,350]];
   let evolveInt = null;
   let population;
 
@@ -143,18 +142,21 @@ export const addButtonListeners = (ctx, fittestCtx) => {
     });
     document.getElementById('current-generation').innerHTML = 0
     document.getElementById('individuals-screened').innerHTML = 0
-    console.log('resetting')
+    // console.log('resetting')
   }
 
   const clearPop = () => {
     clearInterval(evolveInt)
     coordinates = [];
+    population = null;
     clearCanvas(canvas);
     fittestCtx.clearRect(0, 0, canvas.width, canvas.height)
-    console.log('clearing');
+    // console.log('clearing');
     totalRoutesDisplay.innerHTML = ''
     document.getElementById('current-generation').innerHTML = 0
     document.getElementById('individuals-screened').innerHTML = 0
+    document.getElementById('starting-distance').innerHTML = '';
+    document.getElementById('best-distance').innerHTML = '';
   }
 
   const popSizeLabel = document.getElementById('popsize-label');
@@ -164,7 +166,7 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   popSizeSlider.oninput = () => {
     popSize = popSizeSlider.value
     popSizeLabel.innerHTML = `${popSize}`
-    console.log(popSize);
+    // console.log(popSize);
   };
   const mutationLabel = document.getElementById('mutation-label');
   const mutationSlider = document.getElementById('mutation-slider');
@@ -173,7 +175,7 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   mutationSlider.oninput = () => {
     mutProb = mutationSlider.value
     mutationLabel.innerHTML = `${mutProb}`
-    console.log(mutProb);
+    // console.log(mutProb);
   };
   const crossLabel = document.getElementById('cross-label');
   const crossSlider = document.getElementById('cross-slider');
@@ -182,23 +184,23 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   crossSlider.oninput = () => {
     crossProb = crossSlider.value
     crossLabel.innerHTML = `${crossProb}`
-    console.log(crossProb);
+    // console.log(crossProb);
   };
 
   canvas.addEventListener('click', function (event) {
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    console.log("x: " + x + " y: " + y);
+    // console.log("x: " + x + " y: " + y);
     coordinates.push([x, y])
-    console.log('coordinates: ', coordinates)
+    // console.log('coordinates: ', coordinates)
     const pxSize = 5;
     const offset = pxSize / 2;
     ctx.fillRect(x - offset, y - offset, pxSize, pxSize);
     totalRoutesDisplay.innerHTML = factorial(coordinates.length).toLocaleString();
   }, false);
 
-  console.log(`popsize: ${popSize}, mutprob: ${mutProb}, crossprob: ${crossProb}`)
+  // console.log(`popsize: ${popSize}, mutprob: ${mutProb}, crossprob: ${crossProb}`)
 
   startBtn.addEventListener('click', beginEvol);
   stopBtn.addEventListener('click', stopEvol);

@@ -1,4 +1,3 @@
-// const Individual = require('./individual');
 import Individual from './individual';
 import { factorial } from './util';
 
@@ -37,7 +36,6 @@ class Population {
         if (currentFitness >= fitnessThreshold) {
           matingPair.push(individuals[i]);
           if (matingPair.length === 2) {
-            // console.log('in loop')
             let newChildren = matingPair[0].mate(this.crossProb, this.mutProb, matingPair[1]);
             nextGen = nextGen.concat(newChildren);
             matingPair = [];
@@ -71,7 +69,7 @@ class Population {
         fittest = individual;
       }
     })
-    console.log(`fittest individual's distance: ${fittest.distance}`)
+    // console.log(`fittest individual's distance: ${fittest.distance}`)
     return fittest;
   }
 }
@@ -88,8 +86,4 @@ Array.prototype.shuffle = function () {
   return this;
 };
 
-let p = new Population(10, 0.3, 0.05, [0,0], [1, 1], [2, 2], [3, 3], [4, 4], [5,5], [6,6], [7,7]);
-p.createNextGen();
-
-// module.exports = Population;
 export default Population;

@@ -6,17 +6,6 @@ class Individual {
     this.calculateFitness();
     // console.log(`fitness: ${this.fitness}`)
     // console.log('distance: ', this.distance)
-
-    // Code from dealing with chromosome as array of vectors rather than relying on orderered array
-    // let startPoint = shuffledCoords.pop();
-    // let loopCounts = shuffledCoords.length
-    // for (let i = 0; i < loopCounts; i++) {
-    //   let endPoint = shuffledCoords.pop();
-    //   this.genes[i] = [startPoint, endPoint];
-    //   // console.log(startPoint);
-    //   // console.log(endPoint);
-    //   startPoint = endPoint
-    // };
   }
 
   // refactor to normalize fitness values - logic may need to be at population level
@@ -109,20 +98,6 @@ class Individual {
 function getDistance(point1, point2) {
   return Math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2);
 }
-
-// let i2 = new Individual([0, 0], [4, 0], [4, 4], [0, 4]);
-// let i3 = new Individual([0, 4], [4, 4], [4, 0], [0, 0]);
-// i2.mate(1, i3);
-
-// let mutProb = 0.05
-// let crossProb = 0.3
-
-// let i4 = new Individual([0,0], [1,1], [2,2], [3,3], [4,4], [5,5])
-// console.log(i4);
-// let i5 = new Individual([2,2], [5,5], [3,3], [0,0], [1,1], [4,4])
-// i5.fitness = 1000
-// console.log('fitness: ', i5.fitness);
-// i4.mate(0.5, i5);
 
 export default Individual;
 // module.exports = Individual;
