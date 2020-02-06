@@ -186,6 +186,15 @@ export const addButtonListeners = (ctx, fittestCtx) => {
     crossLabel.innerHTML = `${crossProb}`
     // console.log(crossProb);
   };
+  const elitismLabel = document.getElementById('elitism-label');
+  const elitismSlider = document.getElementById('elitism-slider');
+  let elitismRate = elitismSlider.value;
+  elitismLabel.innerHTML = `${elitismSlider.value}`;
+  elitismSlider.oninput = () => {
+    elitismRate = elitismSlider.value
+    elitismLabel.innerHTML = `${elitismRate}`
+    console.log(elitismRate);
+  };
 
   canvas.addEventListener('click', function (event) {
     var rect = canvas.getBoundingClientRect();
