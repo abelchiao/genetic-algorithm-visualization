@@ -14,7 +14,7 @@
 <body>
   <div class='app-all'>
 
-    <h1 class='app-title'>Genetic Algorithm Visualizer</h1>
+    <h1 class='app-title'>Solving the Traveling Salesman Problem with a Genetic Algorithm</h1>
 
     <div class='route-displays'>
       <div class='generation-fittest'>
@@ -58,7 +58,7 @@
           <div class='param-item-container'>
             <div class='param-item-label'>
               <div>Population size</div>
-              <img class='question-circle' src='../images/question-circle.svg'>
+              <img class='question-circle' src='../images/question-circle.svg' alt='?'>
             </div>
             <div class='param-input'>
               <input id='popsize-slider' type='range' min='0' max='2000' step='25' value='500'>
@@ -70,7 +70,7 @@
           <div class='param-item-container'>
             <div class='param-item-label'>
               <div>Mutation rate</div>
-              <img class='question-circle' src='../images/question-circle.svg'>
+              <img class='question-circle' src='../images/question-circle.svg' alt='?'>
             </div>
             <div class='param-input'>
               <input id='mutation-slider' type='range' min='0' max='1' step='0.01' value='0.05'>
@@ -82,7 +82,7 @@
           <div class='param-item-container'>
             <div class='param-item-label'>
               <div>Crossover rate</div>
-              <img class='question-circle' src='../images/question-circle.svg'>
+              <img class='question-circle' src='../images/question-circle.svg' alt='?'>
             </div>
             <div class='param-input'>
               <input id='cross-slider' type='range' min='0' max='1' step='0.01' value='0.3'>
@@ -94,7 +94,7 @@
           <div class='param-item-container'>
             <div class='param-item-label'>
               <div>Elitism</div>
-              <img class='question-circle' src='../images/question-circle.svg'>
+              <img class='question-circle' src='../images/question-circle.svg' alt='?'>
             </div>
             <div class='param-input'>
               <input id='elitism-slider' type='range' min='0' max='1' step='0.01' value='0.02'>
@@ -130,20 +130,35 @@
     </div>
 
     <div class='background'>
-      <p>
+      <h2 class='background-title'>Background</h2>
+      <div class='background-paragraph'>
+        The traveling salesman problem is a classic algorithmic problem that 
+        seeks to find the most efficient route that traverses every given city 
+        and returns the salesman to the original city. This problem is classified 
+        as NP-hard.
+      </div>
+      <div class='background-paragraph'>
+        A brute force approach to solving for the shortest route runs in O(n!) 
+        time, making this approach unrealistic for sample sizes of greater than
+        a handful of cities. Assuming routes are symmetric (i.e. the distance
+        between two cities is the same if the route is reversed), there exist 
+        (n-1)!/2 possible permutations. A problem consisting of 10 cities has 
+        181,440 possible routes; 16 cities yields 653,837,184,000 possibilities.
+      </div>
+      <div class='background-paragraph'>
         Genetic algorithms are optimization algorithms inspired by the principle of Darwinian natural selection. Solutions to a
         problem are represented as individual chromosomes within a population and are evaluated for individual
         fitness/performance. The fittest individuals in the population reproduce, producing offspring with a combination of the
         parents' traits; the least fit individuals are removed from the population and replaced with the children. Further
         population variance/diversity is driven by random events modeled after chromosomal crossover and genetic mutation,
         resulting in a population that converges toward a more optimal solution with each generation.
-      </p>
-      <p>
+      </div>
+      <div class='background-paragraph'>
         This project visualizes the use of a genetic algorithm to solve the traveling salesman problem - points are chosen on a
         map/plane and the algorithm attempts to find the shortest path that traverses every point. Individual solutions are
         comprised of combinations of routes between two points on a map (genes). The individual's fitness is defined by the
         combined total distance covered by its component routes.
-      </p>
+      </div>
     </div>
   </div>
 </body>
