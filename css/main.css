@@ -123,3 +123,12 @@ body {
   margin: 5px;
 }
 
+.background-title {
+  font-size: 19px;
+  /* line-height: 28px; */
+  font-weight: 400;
+}
+
+.background-paragraph {
+  margin-top: 10px;
+}

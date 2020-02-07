@@ -130,3 +130,7 @@ input:checked + .slider:before {
 .question-circle:hover {
   cursor: pointer;
 }
+
+.param-input > input:hover {
+  cursor: pointer;
+}
