@@ -25,6 +25,7 @@ class Population {
   }
 
   createNextGen() {
+    this.passElites();
     let nextGen = [];
     let matingPair = [];
     while (nextGen.length < this.popSize) {
@@ -52,6 +53,12 @@ class Population {
     if (currentGenFittest.fitness > this.fittestEver.fitness) {
       this.fittestEver = currentGenFittest
     };
+  }
+
+  passElites() {
+    let sortedInds = this.currentGen.sort((a, b) => (a.distance > b.distance) ? 1 : -1)
+    console.log(sortedInds)
+    return sortedInds
   }
 
   getTotalFitness() {
