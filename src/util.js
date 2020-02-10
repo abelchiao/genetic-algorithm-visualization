@@ -119,8 +119,7 @@ export const addButtonListeners = (ctx, fittestCtx) => {
   totalRoutesDisplay.innerHTML = factorial(coordinates.length).toLocaleString();
 
   const beginEvol = () => {
-    population = population ? population : new Population(popSize, crossProb, mutProb, ...coordinates)
-    // let population = new Population(popSize, crossProb, mutProb, ...coordinates)
+    population = population ? population : new Population(popSize, crossProb, mutProb, elitismRate, ...coordinates)
     evolveInt = setInterval(() => evolutionLoop(ctx, fittestCtx, population), 100);
     document.getElementById('starting-distance').innerHTML = Math.floor(population.getFittest().distance);
     document.getElementById('best-distance').innerHTML = Math.floor(population.fittestEver.distance)
