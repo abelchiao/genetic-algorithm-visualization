@@ -132,7 +132,7 @@ export const addButtonListeners = (ctx, fittestCtx) => {
 
   const resetPop = () => {
     clearInterval(evolveInt);
-    population = new Population(popSize, crossProb, mutProb, ...coordinates)
+    population = new Population(popSize, crossProb, mutProb, elitismRate, ...coordinates)
     clearCanvas(canvas)
     fittestCtx.clearRect(0, 0, canvas.width, canvas.height)
     const pxSize = 5;
