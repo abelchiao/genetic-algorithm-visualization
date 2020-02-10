@@ -2,11 +2,12 @@ import Individual from './individual';
 import { factorial } from './util';
 
 class Population {
-  constructor(popSize, crossProb, mutProb, ...coordinates) {
+  constructor(popSize, crossProb, mutProb, elitismRate, ...coordinates) {
     this.coordinates = coordinates
     this.popSize = popSize;
     this.crossProb = crossProb;
     this.mutProb = mutProb;
+    this.elitismRate = elitismRate
     this.totalFitness = 0;
     this.currentGen = [];
     this.genNumber = 0;
@@ -25,7 +26,7 @@ class Population {
   }
 
   createNextGen() {
-    this.passElites();
+    if (this.elitismRate) this.passElites();
     let nextGen = [];
     let matingPair = [];
     while (nextGen.length < this.popSize) {
