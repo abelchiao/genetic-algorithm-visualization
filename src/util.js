@@ -206,7 +206,7 @@ export const addButtonListeners = (ctx, fittestCtx) => {
     const pxSize = 5;
     const offset = pxSize / 2;
     ctx.fillRect(x - offset, y - offset, pxSize, pxSize);
-    totalRoutesDisplay.innerHTML = factorial(coordinates.length).toLocaleString();
+    totalRoutesDisplay.innerHTML = Math.ceil(factorial(coordinates.length - 1)/2).toLocaleString();
   }, false);
 
   // console.log(`popsize: ${popSize}, mutprob: ${mutProb}, crossprob: ${crossProb}`)
