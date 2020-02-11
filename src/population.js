@@ -19,6 +19,7 @@ class Population {
       let individual = new Individual(mutProb, ...chromosome);
       this.totalFitness += individual.fitness;
       this.currentGen.push(individual);
+      // console.log('individual distance: ', individual.distance)
       // console.log('population total fitness: ', this.totalFitness)
     }
     // console.log('CURRENT POPULATION: ', this.currentGen)
@@ -26,8 +27,9 @@ class Population {
   }
 
   createNextGen() {
-    if (this.elitismRate) this.passElites();
     let nextGen = [];
+    if (this.elitismRate) nextGen = nextGen.concat(this.passElites());
+    console.log(nextGen);
     let matingPair = [];
     while (nextGen.length < this.popSize) {
       let fitnessThreshold = Math.random() * this.totalFitness;
@@ -57,9 +59,12 @@ class Population {
   }
 
   passElites() {
-    let sortedInds = this.currentGen.sort((a, b) => (a.distance > b.distance) ? 1 : -1)
-    console.log(sortedInds)
-    return sortedInds
+    let sortedInds = this.currentGen.sort((a, b) => (a.distance > b.distance) ? -1 : 1)
+    console.log(JSON.stringify(sortedInds));
+    let numElites = Math.floor(this.elitismRate * this.popSize);
+    let elites = []
+    // console.log(sortedInds)
+    return elites
   }
 
   getTotalFitness() {
