@@ -14,7 +14,9 @@
 <body>
   <div class='app-all'>
 
-    <h1 class='app-title'>Solving the Traveling Salesman Problem with a Genetic Algorithm</h1>
+    <!-- <h1 class='app-title'>Leveraging a Genetic Algorithm for Route Finding</h1> -->
+    <!-- <h1 class='app-title'>Solving the Traveling Salesman Problem with a Genetic Algorithm</h1> -->
+    <h1 class='app-title'>Applying Genetic Algorithms to the Traveling Salesman Problem</h1>
 
     <div class='route-displays'>
       <div class='generation-fittest'>
@@ -125,6 +127,7 @@
           <li>Press START to begin searching for shortest route between the default provided points.</li>
           <li>Algorithm parameters can be changed using the interface to the left.</li>
           <li>To run the algorithm against a custom set of points, click CLEAR and then click on the canvas to specify points.</li>
+          <li>The app must be RESET before algorithm parameters are altered for the changes to take effect.</li>
         </ul>
       </div>
     </div>
@@ -132,10 +135,17 @@
     <div class='background'>
       <h2 class='background-title'>Background</h2>
       <div class='background-paragraph'>
-        The traveling salesman problem is a classic algorithmic problem that 
-        seeks to find the most efficient route that traverses every given city 
-        and returns the salesman to the original city. This problem is classified 
-        as NP-hard.
+        The traveling salesman problem (TSP) is a classic algorithmic problem 
+        that seeks to find the most efficient route that traverses every given 
+        city and returns the salesman to the original city. TSP, classified as 
+        NP-hard, is highly studied in theoretical computer science and is and
+        has important applications in 
+        <a 
+          href='https://en.wikipedia.org/wiki/Operations_research' 
+          target='_blank'
+        >
+          operations research
+        </a>.
       </div>
       <div class='background-paragraph'>
         A brute force approach to solving for the shortest route runs in O(n!) 
@@ -144,6 +154,8 @@
         between two cities is the same if the route is reversed), there exist 
         (n-1)!/2 possible permutations. A problem consisting of 10 cities has 
         181,440 possible routes; 16 cities yields 653,837,184,000 possibilities.
+        For even small sample sizes, this approach quickly becomes too
+        computationally expensive for practical use.
       </div>
       <div class='background-paragraph'>
         Genetic algorithms are optimization algorithms inspired by the principle of Darwinian natural selection. Solutions to a
