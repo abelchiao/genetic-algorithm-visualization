@@ -29,7 +29,7 @@ class Population {
   createNextGen() {
     let nextGen = [];
     if (this.elitismRate) nextGen = nextGen.concat(this.passElites());
-    console.log(nextGen);
+    // console.log('next generation elites: ', nextGen);
     let matingPair = [];
     while (nextGen.length < this.popSize) {
       let fitnessThreshold = Math.random() * this.totalFitness;
@@ -59,11 +59,11 @@ class Population {
   }
 
   passElites() {
-    let sortedInds = this.currentGen.sort((a, b) => (a.distance > b.distance) ? -1 : 1)
-    console.log(JSON.stringify(sortedInds));
+    let sortedInds = this.currentGen.sort((a, b) => (a.fitness > b.fitness) ? -1 : 1)
+    // console.log(JSON.stringify(sortedInds));
     let numElites = Math.floor(this.elitismRate * this.popSize);
-    let elites = []
-    // console.log(sortedInds)
+    let elites = sortedInds.slice(0, numElites)
+    // console.log(elites)
     return elites
   }
 
