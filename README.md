@@ -1,3 +1,5 @@
+[Live link.](https://abelchiao.github.io/genetic-algorithm-visualization/)
+
 ## Background
 Having come from a biotechnology background, I was inspired to pursue software by the revolutionary effect of advances in computation and data science on biological innovation.
 Genetic algorithms are an embodiment of the intersection between computer science and biology, and so this project marries my past experience in genetics with my more recently acquired coding capabilities.
