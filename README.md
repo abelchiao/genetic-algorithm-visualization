@@ -13,36 +13,3 @@ This project visualizes the use of a genetic algorithm to solve the traveling sa
 Individual solutions are comprised of combinations of routes between two points on a map (genes).
 The individual's fitness is defined by the combined total distance covered by its component routes.
 
-## Functionality & MVP
-### Core:
-* Functional genetic algorithm
-* Visual representation of "individuals" via Canvas
-* Graph of fitness of population or fittest individual over generations via D3
-* Ability for user to choose points on Canvas as input
-
-### Bonus:
-* User interaction with algorithm parameters (mutation/crossover rate, etc.)
-* Application of algorithm to another simple problem
-
-### Super Bonus:
-* Calculate shortest routes through points in a maze by using BFS to creating component routes between single points.
-* Use OpenStreetMap to calculate shortest route between points on a real map.
-
-## Wireframe
-![Wireframe](images/wireframe.png)
-
-## Architecture and Technologies
-Javascript will be used to handle the logic (generating and filtering populations). 
-Rendering of the points/routes between them will be done through Canvas.
-D3 may be used to visualize the algorithm's convergence toward a solution.
-
-Logic for manipulating individuals (generating, calculating fitness, mutating, etc.) will be handled by the `Individual` class in `individual.js`; population-level logic (generating, selection, etc.) will be handled by the `Population` class in `population.js`. The evolution logic loop will be constructed in `evolution.js`.
-
-## Implementation Timeline
-__Days 1-2:__ Research algorithm and write functional version applied to distance.
-
-__Days 3-5:__ Build visual representation of routes on Canvas.
-
-__Day 6:__ Graph the performance of fittest individual or the population as it changes from generation to generation.
-
-__Day 7:__ User interactivity features - specify points, mutation/crossover rate.
