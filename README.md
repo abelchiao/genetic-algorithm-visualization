@@ -94,7 +94,7 @@ Because of how quickly the sample space blows up for any decently-sized set of c
 Instead, the population undergoes a process of natural selection, which drives it toward more optimal conditions.
 
 In this case, as in nature, the fittest individuals of the population have a higher probability to reproduce and pass their genetic data on to the next generation.
-The relative fitness of each individual is the inverse of the distance required to traverse the cities in the order specified in its chromosome; the longer shorter the route, the fitter the individual.
+The relative fitness of each individual is the inverse of the distance required to traverse the cities in the order specified in its chromosome; the shorter the route, the fitter the individual.
 
 #### Implementation:
 An ```Individual```'s fitness is inversely proportional to the route it represents.
@@ -110,6 +110,37 @@ calculateFitness() {
   return 1 / sumDist;
 }
 ```
+___
+In this implementation of a genetic algorithm, I've chosen to use a roulette-wheel-selection scheme to apply selection pressure to increase the fitness of the population with each generation.
+To select parent individuals for breeding, the fitness scores of the entire population are summed up and a random multiplier between 0 and 1 is applied to create a fitness threshold.
+The roulette wheel is "spun" by iterating over a shuffled list of the individuals in the population and summing each individual's fitness score as it is touched upon.
+When the summed fitness scores match or exceed the fitness threshold, the current individual is chosen to be a parent in a mating pair.
+Individuals with higher fitness scores are more likely to push the tally past the fitness threshold, thereby driving positive selection pressure.
+
+#### Implementation:
+Until the next generation is sufficiently populated, mating pairs are selected via roulette-wheel-selection and pass their offspring to the new population.
+```
+let matingPair = [];
+while (nextGen.length < this.popSize) {
+  let fitnessThreshold = Math.random() * this.totalFitness;
+  let currentFitness = 0;
+  let individuals = this.currentGen.shuffle();
+  for (let i = 0; i < individuals.length; i++) {
+    currentFitness += individuals[i].fitness;
+    if (currentFitness >= fitnessThreshold) {
+      matingPair.push(individuals[i]);
+      if (matingPair.length === 2) {
+        let newChildren = matingPair[0].mate(this.crossProb, this.mutProb, matingPair[1]);
+        nextGen = nextGen.concat(newChildren);
+        matingPair = [];
+      }
+      break;
+    }
+  }
+}
+```
+It is important to note that this is a probabilistic process; the fittest individuals are more likely but not guaranteed to be chosen to reproduce. Similarly, the least fit individuals are less likely to reproduce but are not excluded from reproduction.
+___
 
 ## Technologies
 This project was implemented using only vanilla JavaScript and HTML5 Canvas (and HTML/CSS).
