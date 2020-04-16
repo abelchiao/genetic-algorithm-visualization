@@ -20,12 +20,15 @@ The individual's fitness is defined by the combined total distance covered by it
 ## Features
 <!-- ___ -->
 ### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
+![Demo run](images/demo_run.gif)
 ___
 
 ### Populate the map with a custom set of points and find the shortest route between them.
+![Custom run](images/custom_run.gif)
 ___
 
 ### Manipulate algorithm parameters and test the algorithm under new conditions.
+![Algorithm parameters](images/algo_params.gif)
 ___
 
 ## Algorithm implementation
