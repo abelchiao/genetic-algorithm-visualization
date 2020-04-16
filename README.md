@@ -2,7 +2,7 @@
 
 [Live link.](https://abelchiao.github.io/genetic-algorithm-visualization/)
 
-Table of Contents:
+__Table of Contents__
 - [Background](#background)
   * [What are genetic algorithms?](#what-are-genetic-algorithms-)
   * [The traveling salesman problem](#the-traveling-salesman-problem)
