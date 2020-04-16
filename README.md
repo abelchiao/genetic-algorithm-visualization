@@ -2,6 +2,26 @@
 
 [Live link.](https://abelchiao.github.io/genetic-algorithm-visualization/)
 
+Table of Contents:
+- [Background](#background)
+  * [What are genetic algorithms?](#what-are-genetic-algorithms-)
+  * [The traveling salesman problem](#the-traveling-salesman-problem)
+- [Features](#features)
+    + [Visualize the algorithm's progression as the solution population converges toward the shortest distance.](#visualize-the-algorithm-s-progression-as-the-solution-population-converges-toward-the-shortest-distance)
+    + [Populate the map with a custom set of points and find the shortest route between them.](#populate-the-map-with-a-custom-set-of-points-and-find-the-shortest-route-between-them)
+    + [Manipulate algorithm parameters and test the algorithm under new conditions.](#manipulate-algorithm-parameters-and-test-the-algorithm-under-new-conditions)
+- [Algorithm implementation](#algorithm-implementation)
+  * [Individual and Population](#---individual----and----population---)
+  * [Generating the initial population](#generating-the-initial-population)
+  * [Fitness](#fitness)
+  * [Fitness proportionate selection](#fitness-proportionate-selection)
+  * [Mating and crossover events](#mating-and-crossover-events)
+  * [Mutation and local/global optima](#mutation-and-local-global-optima)
+  * [Elitism](#elitism)
+- [Technologies](#technologies)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 <br>
 
 ## Background
