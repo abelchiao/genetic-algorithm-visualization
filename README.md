@@ -18,15 +18,15 @@ This project visualizes the use of a genetic algorithm adapted to solve the trav
 
 
 ## Features
-### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
+#### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
 ![Demo run](images/demo_run.gif)
 ___
 
-### Populate the map with a custom set of points and find the shortest route between them.
+#### Populate the map with a custom set of points and find the shortest route between them.
 ![Custom run](images/custom_run.gif)
 ___
 
-### Manipulate algorithm parameters and test the algorithm under new conditions.
+#### Manipulate algorithm parameters and test the algorithm under new conditions.
 ![Algorithm parameters](images/algo_params.gif)
 
 
@@ -141,6 +141,7 @@ while (nextGen.length < this.popSize) {
 ```
 It is important to note that this is a probabilistic process; the fittest individuals are more likely but not guaranteed to be chosen to reproduce. Similarly, the least fit individuals are less likely to reproduce but are not excluded from reproduction.
 ___
+
 
 ## Technologies
 This project was implemented using only vanilla JavaScript and HTML5 Canvas (and HTML/CSS).
