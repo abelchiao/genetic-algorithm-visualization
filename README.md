@@ -16,19 +16,60 @@ This project visualizes the use of a genetic algorithm to solve the traveling sa
 Individual solutions are comprised of combinations of routes between two points on a map (genes).
 The individual's fitness is defined by the combined total distance covered by its component routes.
 
+
 ## Features
 ___
 ### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
 
 
-
 ### Populate the map with a custom set of points and find the shortest route between them.
 
 
-
-### Manipulate algorithm parameters and run with new conditions.
+### Manipulate algorithm parameters and test the algorithm under new conditions.
 
 
 ## Algorithm implementation
 ___
+In accordance with the theme of natural selection, solutions in genetic algorithms are represented as individuals in a population. 
 
+
+#### Implementation: 
+Logic is divided between ```Individual``` and ```Population``` classes.
+```
+class Individual {
+  constructor(mutProb, ...coordinates) {
+    this.geneCount = coordinates.length;
+    this.mutProb = mutProb;
+    this.chromosome = coordinates.slice();
+    this.calculateFitness();
+  }
+}
+```
+```
+class Population {
+  constructor(popSize, crossProb, mutProb, elitismRate, ...coordinates) {
+    this.coordinates = coordinates
+    this.popSize = popSize;
+    this.crossProb = crossProb;
+    this.mutProb = mutProb;
+    this.elitismRate = elitismRate
+    this.totalFitness = 0;
+    this.currentGen = [];
+    this.genNumber = 0;
+    this.numPossibleRoutes = factorial(coordinates.length)
+    
+    for (let i = 0; i < popSize; i++) {
+      let chromosome = coordinates.slice().shuffle();
+      let individual = new Individual(mutProb, ...chromosome);
+      this.totalFitness += individual.fitness;
+      this.currentGen.push(individual);
+    }
+
+    this.fittestEver = this.getFittest();
+  }
+}
+```
+
+## Technologies
+___
+This project was implemented using only vanilla JavaScript and HTML5 Canvas (and HTML/CSS).

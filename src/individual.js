@@ -4,8 +4,6 @@ class Individual {
     this.mutProb = mutProb;
     this.chromosome = coordinates.slice();
     this.calculateFitness();
-    // console.log(`fitness: ${this.fitness}`)
-    // console.log('distance: ', this.distance)
   }
 
   // refactor to normalize fitness values - logic may need to be at population level
