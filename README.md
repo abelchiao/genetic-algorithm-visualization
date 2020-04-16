@@ -16,7 +16,7 @@ __Table of Contents__
   * [Fitness](#fitness)
   * [Fitness proportionate selection](#fitness-proportionate-selection)
   * [Mating and crossover events](#mating-and-crossover-events)
-  * [Mutation and local/global optima](#mutation-and-local-global-optima)
+  * [Mutation and local/global optima](#mutation-and-localglobal-optima)
   * [Elite individuals](#elite-individuals)
 - [Technologies](#technologies)
 
