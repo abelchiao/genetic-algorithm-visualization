@@ -3,7 +3,7 @@
 [Live link.](https://abelchiao.github.io/genetic-algorithm-visualization/)
 
 ## Background
-___
+<!-- ___ -->
 Having come from a biotechnology background, I was inspired to pursue software by the revolutionary effect of advances in computation and data science on biological innovation.
 Genetic algorithms are an embodiment of the intersection between computer science and biology, and so this project marries my past experience in genetics with my more recently acquired coding capabilities.
 
@@ -18,18 +18,18 @@ The individual's fitness is defined by the combined total distance covered by it
 
 
 ## Features
-___
+<!-- ___ -->
 ### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
-
+___
 
 ### Populate the map with a custom set of points and find the shortest route between them.
-
+___
 
 ### Manipulate algorithm parameters and test the algorithm under new conditions.
-
+___
 
 ## Algorithm implementation
-___
+<!-- ___ -->
 In accordance with the theme of natural selection, solutions in genetic algorithms are represented as individuals in a population. 
 
 
