@@ -17,7 +17,7 @@ __Table of Contents__
   * [Fitness proportionate selection](#fitness-proportionate-selection)
   * [Mating and crossover events](#mating-and-crossover-events)
   * [Mutation and local/global optima](#mutation-and-local-global-optima)
-  * [Elitism](#elitism)
+  * [Elite individuals](#elite-individuals)
 - [Technologies](#technologies)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -248,7 +248,7 @@ This is a good time to mention that genetic algorithms are __heuristic__ algorit
 As a result, there is no guarantee that genetic algorithms will find the absolute best answer or that they will reach an acceptable solution in a given amount of time. 
 Instead, they are generally allowed to run until an acceptable threshold is reached.
 ___
-### Elitis individuals
+### Elite individuals
 Because our selection scheme is based on probability, the fittest individuals representing the most optimal solutions in the current generation are not guaranteed to be propagated to the next.
 As a result, the shortest routes are often lost from one generation to the next even if the broader population trends toward greater fitness.
 Unlike in nature, here we can cheat a little by manually finding the fittest individuals (elite individuals) and manually pass them into the next generation to prevent any backtracking.
