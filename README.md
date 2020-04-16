@@ -192,6 +192,31 @@ mate(crossProb, mutProb, otherInd) {
 ```
 ___
 As in nature, genetic diversity is the critical driver of evolution.
+Without sufficient diversity, the population would tend to converge on local rather than global optima.
+The evolution of solutions would then be "stuck" and be unable to continue to evolve toward the shortest route.
+The above crossover events help prevent this but having an innate mutation probability also allows the population to "break out" of local optima and continue to seek out the global optima.
+Mutation in this algorithm is represented by a chance to randomly swap the position of two cities in a route, thereby ensuring that there is always a source of new routes when building populations.
+
+#### Implementation: 
+If a randomly generated number between 0 and 1 is less than the mutation probability threshold, the position of two genes in the ```Individual```'s chromosome are swapped.
+```
+mutate() {
+  if (Math.random() < this.mutProb) {
+    let idx1 = Math.floor(Math.random() * this.chromosome.length);
+    let idx2 = Math.floor(Math.random() * this.chromosome.length);
+    while (idx1 === idx2) idx2 = Math.floor(Math.random() * this.chromosome.length);
+    [this.chromosome[idx1], this.chromosome[idx2]] = 
+      [this.chromosome[idx2], this.chromosome[idx1]];
+  }
+  this.calculateFitness();
+  return this.chromosome;
+};
+```
+This is a good time to mention that genetic algorithms are __heuristic__ algorithms; unlike deterministic algorithms that always run the same way, heuristic algorithms are based on probability. 
+As a result, there is no guarantee that a genetic algorithm will be able to find the best answer or that it will reach an acceptable threshold in a given amount of time. 
+Instead, they are generally allowed to run until an acceptable solution is reached.
+___
+
 
 
 ## Technologies
