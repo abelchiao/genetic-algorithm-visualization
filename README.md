@@ -2,6 +2,8 @@
 
 [Live link.](https://abelchiao.github.io/genetic-algorithm-visualization/)
 
+<br>
+
 ## Background
 ### What are genetic algorithms?
 Genetic algorithms are optimization algorithms inspired by the principle of Darwinian natural selection.
@@ -16,6 +18,7 @@ A brute force approach to solving for the shortest route runs in O(n!) time, mak
 
 This project visualizes the use of a genetic algorithm adapted to solve the traveling salesman problem.
 
+<br>
 
 ## Features
 #### Visualize the algorithm's progression as the solution population converges toward the shortest distance.
@@ -29,6 +32,7 @@ ___
 #### Manipulate algorithm parameters and test the algorithm under new conditions.
 ![Algorithm parameters](images/algo_params.gif)
 
+<br>
 
 ## Algorithm implementation
 ### ```Individual``` and ```Population```
@@ -86,7 +90,7 @@ Array.prototype.shuffle = function () {
 };
 ```
 ___
-### ```Individual``` fitness
+### Fitness
 Because of how quickly the sample space blows up for any decently-sized set of cities, an optimal or near-optimal solution is unlikely to be contained in the initial random population. 
 Instead, the population undergoes a process of natural selection, which drives it toward more optimal conditions.
 
@@ -139,7 +143,7 @@ while (nextGen.length < this.popSize) {
 ```
 It is important to note that this is a probabilistic process; the fittest individuals are more likely but not guaranteed to be chosen to reproduce. Similarly, the least fit individuals are less likely to reproduce but are not excluded from reproduction.
 ___
-### ```Individual``` mating and crossover events
+### Mating and crossover events
 When two parent individuals reproduce, the children they pass on to the next generation are not necessarily clones (identical copies) of themselves.
 Instead, there is some probability (represented here as crossover probability) that the children will be produced by randomly combining portions of each parents' chromosome in a process analogous to genetic crossover in biology. 
 As a result, the child inherits traits from both parents.
@@ -201,6 +205,8 @@ As in nature, genetic diversity is the critical driver of evolution.
 Without sufficient diversity, the population would tend to converge on local rather than global optima.
 The evolution of solutions would then be "stuck" and be unable to continue to evolve toward the shortest route.
 The above crossover events help prevent this but having an innate mutation probability also allows the population to "break out" of local optima and continue to seek out the global optima.
+Too high a mutation rate, however, can slow down or prevent convergence on optima by introducing too much randomness.
+
 Mutation in this algorithm is represented by a chance to randomly swap the position of two cities in a route, thereby ensuring that there is always a source of new routes when building populations.
 
 #### Implementation: 
@@ -222,9 +228,24 @@ This is a good time to mention that genetic algorithms are __heuristic__ algorit
 As a result, there is no guarantee that genetic algorithms will find the absolute best answer or that they will reach an acceptable solution in a given amount of time. 
 Instead, they are generally allowed to run until an acceptable threshold is reached.
 ___
-### Elite ```Individual```s
+### Elitism
+Because our selection scheme is based on probability, the fittest individuals representing the most optimal solutions in the current generation are not guaranteed to be propagated to the next.
+As a result, the shortest routes are often lost from one generation to the next even if the broader population trends toward greater fitness.
+Unlike in nature, here we can cheat a little by manually finding the fittest individuals (elite individuals) and manually pass them into the next generation to prevent any backtracking.
+Typically only a very low percentage of the population needs to be carried over in this way.
 
+#### Implementation:
+The current generation is sorted with respect to fitness scores and a proportion, defined by the elitism rate, is selected to be directly passed on to the next generation.
+```
+passElites() {
+  let sortedInds = this.currentGen.sort((a, b) => (a.fitness > b.fitness) ? -1 : 1)
+  let numElites = Math.floor(this.elitismRate * this.popSize);
+  let elites = sortedInds.slice(0, numElites)
+  return elites;
+};
+```
 
+<br>
 
 ## Technologies
 This project was implemented using only vanilla JavaScript and HTML5 Canvas (and HTML/CSS).
