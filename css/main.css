@@ -79,6 +79,7 @@ body {
 .below-canvases {
   display: flex;
   justify-content: space-between;
+  max-width: 1200px;
 }
 
 .instructions {
@@ -117,6 +118,7 @@ body {
   margin: 10px;
   font-size: 16px;
   line-height: 20px;
+  max-width: 1180px;
 }
 
 .background p {
