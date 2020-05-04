@@ -16,6 +16,11 @@
   margin: 10px;
 }
 
+.algo-options-explanation {
+  width: 350px;
+  margin-top: 10px;
+}
+
 .params-title {
   font-size: 20px;
   padding-bottom: 10px;
